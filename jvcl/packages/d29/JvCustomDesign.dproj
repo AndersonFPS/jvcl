@@ -1,15 +1,16 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{3CC450E5-643D-41C8-957A-BA5244E94939}</ProjectGuid>
         <MainSource>JvCustomDesign.dpk</MainSource>
-        <ProjectVersion>20.0</ProjectVersion>
+        <ProjectVersion>20.1</ProjectVersion>
         <Config Condition="'$(Config)'==''">Release</Config>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <AppType>Package</AppType>
-        <TargetedPlatforms>1048579</TargetedPlatforms>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <ProjectName Condition="'$(ProjectName)'==''">JvCustomDesign</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -74,8 +75,12 @@
         <DCCReference Include="vclx.dcp"/>
         <DCCReference Include="..\..\design\JvLookoutEditor.pas"/>
         <DCCReference Include="..\..\design\JvOutlookBarEditors.pas"/>
-        <DCCReference Include="..\..\design\JvOutlookBarForm.pas"/>
-        <DCCReference Include="..\..\design\JvScheduleEditorForm.pas"/>
+        <DCCReference Include="..\..\design\JvOutlookBarForm.pas">
+            <Form>FrmOLBEditor</Form>
+        </DCCReference>
+        <DCCReference Include="..\..\design\JvScheduleEditorForm.pas">
+            <Form>FrmScheduleEditor</Form>
+        </DCCReference>
         <DCCReference Include="..\..\design\JvScheduleEditors.pas"/>
         <DCCReference Include="..\..\design\JvTimeLineEditor.pas"/>
         <DCCReference Include="..\..\design\JvCustomReg.pas"/>
@@ -83,12 +88,12 @@
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
-        <BuildConfiguration Include="Debug">
-            <Key>Cfg_2</Key>
-            <CfgParent>Base</CfgParent>
-        </BuildConfiguration>
         <BuildConfiguration Include="Release">
             <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
     </ItemGroup>
@@ -135,10 +140,6 @@
                 </Source>
             </Delphi.Personality>
             <Platforms>
-                <Platform value="Android">False</Platform>
-                <Platform value="iOSDevice">False</Platform>
-                <Platform value="iOSSimulator" ActiveMobileDevice="iPhone">False</Platform>
-                <Platform value="OSX32">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
                 <Platform value="Win64x">False</Platform>

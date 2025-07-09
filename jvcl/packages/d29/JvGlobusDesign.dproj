@@ -1,15 +1,16 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{177EF676-53B7-41C5-8B88-62DEC3EDD002}</ProjectGuid>
         <MainSource>JvGlobusDesign.dpk</MainSource>
-        <ProjectVersion>20.0</ProjectVersion>
+        <ProjectVersion>20.1</ProjectVersion>
         <Config Condition="'$(Config)'==''">Release</Config>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <AppType>Package</AppType>
-        <TargetedPlatforms>1048579</TargetedPlatforms>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <ProjectName Condition="'$(ProjectName)'==''">JvGlobusDesign</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -73,30 +74,52 @@
         <DCCReference Include="vcldb.dcp"/>
         <DCCReference Include="vclimg.dcp"/>
         <DCCReference Include="..\..\design\JvgCompDescription.pas"/>
-        <DCCReference Include="..\..\design\JvgComponentListEditorForm.pas"/>
-        <DCCReference Include="..\..\design\JvgLabelEditorForm.pas"/>
+        <DCCReference Include="..\..\design\JvgComponentListEditorForm.pas">
+            <Form>JvgCompListEditor</Form>
+        </DCCReference>
+        <DCCReference Include="..\..\design\JvgLabelEditorForm.pas">
+            <Form>JvgLabelEditorDlg</Form>
+        </DCCReference>
         <DCCReference Include="..\..\design\JvGlobusReg.pas"/>
-        <DCCReference Include="..\..\design\JvgLogicItemEditorForm.pas"/>
-        <DCCReference Include="..\..\design\JvgLogicsEditorForm.pas"/>
-        <DCCReference Include="..\..\design\JvgMultiResourceEditorForm.pas"/>
+        <DCCReference Include="..\..\design\JvgLogicItemEditorForm.pas">
+            <Form>JvgLogicItemEditor</Form>
+        </DCCReference>
+        <DCCReference Include="..\..\design\JvgLogicsEditorForm.pas">
+            <Form>JvgLogicsEditor</Form>
+        </DCCReference>
+        <DCCReference Include="..\..\design\JvgMultiResourceEditorForm.pas">
+            <Form>JvgMultipleResourceEdit</Form>
+        </DCCReference>
         <DCCReference Include="..\..\design\JvgMultiResources.pas"/>
         <DCCReference Include="..\..\design\JvgPropertyCenter.pas"/>
-        <DCCReference Include="..\..\design\JvgReportEditorForm.pas"/>
-        <DCCReference Include="..\..\design\JvgReportParamEditorForm.pas"/>
-        <DCCReference Include="..\..\design\JvgReportParamsForm.pas"/>
-        <DCCReference Include="..\..\design\JvgRTFPreviewForm.pas"/>
+        <DCCReference Include="..\..\design\JvgReportEditorForm.pas">
+            <Form>JvgReportEditorForm</Form>
+        </DCCReference>
+        <DCCReference Include="..\..\design\JvgReportParamEditorForm.pas">
+            <Form>ReportParamEditor</Form>
+        </DCCReference>
+        <DCCReference Include="..\..\design\JvgReportParamsForm.pas">
+            <Form>JvgReportParamsForm</Form>
+        </DCCReference>
+        <DCCReference Include="..\..\design\JvgRTFPreviewForm.pas">
+            <Form>fRTFPreview</Form>
+        </DCCReference>
         <DCCReference Include="..\..\design\JvgShadowEditor.pas"/>
-        <DCCReference Include="..\..\design\JvgCompEditorTemplateForm.pas"/>
-        <DCCReference Include="..\..\design\JvgAlignForm.pas"/>
+        <DCCReference Include="..\..\design\JvgCompEditorTemplateForm.pas">
+            <Form>JvgCompEditorTemplate</Form>
+        </DCCReference>
+        <DCCReference Include="..\..\design\JvgAlignForm.pas">
+            <Form>AlignForm</Form>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
-        <BuildConfiguration Include="Debug">
-            <Key>Cfg_2</Key>
-            <CfgParent>Base</CfgParent>
-        </BuildConfiguration>
         <BuildConfiguration Include="Release">
             <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
     </ItemGroup>
@@ -143,10 +166,6 @@
                 </Source>
             </Delphi.Personality>
             <Platforms>
-                <Platform value="Android">False</Platform>
-                <Platform value="iOSDevice">False</Platform>
-                <Platform value="iOSSimulator" ActiveMobileDevice="iPhone">False</Platform>
-                <Platform value="OSX32">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
                 <Platform value="Win64x">False</Platform>
